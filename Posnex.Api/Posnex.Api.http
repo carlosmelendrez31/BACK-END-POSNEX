@@ -1,0 +1,59 @@
+@Posnex.Api_HostAddress = http://localhost:5071
+@token = {{accessToken}}
+@businessId = {{businessId}}
+
+### Registrar usuario
+POST {{Posnex.Api_HostAddress}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "email": "owner@example.com",
+  "password": "{{strongPassword}}"
+}
+
+### Iniciar sesión; usa el accessToken devuelto en las siguientes solicitudes
+POST {{Posnex.Api_HostAddress}}/api/v1/auth/login?useCookies=false
+Content-Type: application/json
+
+{
+  "email": "owner@example.com",
+  "password": "{{strongPassword}}"
+}
+
+### Crear restaurante (tipo: Restaurant o Ecommerce)
+POST {{Posnex.Api_HostAddress}}/api/v1/businesses
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Casa Olivo",
+  "type": "Restaurant",
+  "primaryColor": "#304D3D",
+  "secondaryColor": "#E6C98B",
+  "logoUrl": null
+}
+
+### Listar negocios de la cuenta autenticada
+GET {{Posnex.Api_HostAddress}}/api/v1/businesses
+Authorization: Bearer {{token}}
+
+### Consultar negocio propio
+GET {{Posnex.Api_HostAddress}}/api/v1/businesses/{{businessId}}
+Authorization: Bearer {{token}}
+
+### Actualizar nombre y marca (el tipo elegido al crear no cambia)
+PUT {{Posnex.Api_HostAddress}}/api/v1/businesses/{{businessId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Casa Olivo Centro",
+  "primaryColor": "#304D3D",
+  "secondaryColor": "#E6C98B",
+  "logoUrl": null
+}
+
+### Eliminar negocio (borrado lógico; sin eliminación física de datos)
+DELETE {{Posnex.Api_HostAddress}}/api/v1/businesses/{{businessId}}
+Authorization: Bearer {{token}}
+###

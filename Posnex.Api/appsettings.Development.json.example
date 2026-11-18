@@ -1,0 +1,11 @@
+{
+  "ConnectionStrings": {
+    "Posnex": "Host=127.0.0.1;Port=5432;Database=posnex;Username=postgres;Password=TU_PASSWORD_DE_POSTGRES"
+  },
+  "Cors": {
+    "AllowedOrigins": [
+      "http://localhost:4200",
+      "http://127.0.0.1:4200"
+    ]
+  }
+}

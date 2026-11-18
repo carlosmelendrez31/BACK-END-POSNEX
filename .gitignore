@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+**/Properties/launchSettings.local.json
+Posnex.Api/appsettings.Development.json
+Posnex.Api/.data-protection-keys/
+*.user
+*.suo
